@@ -1,21 +1,27 @@
 package com.example.wathchshopapi.global.base;
 
 import io.swagger.annotations.ApiModelProperty;
+import lombok.Getter;
+import lombok.Setter;
 import org.codehaus.jackson.annotate.JsonIgnore;
 
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
+@Getter
+@Setter
 public class BaseSearchRequest {
     @NotNull
     private int page;
 
     @NotNull
+    @Min(value = 1)
     private int size;
 
     @JsonIgnore
     @ApiModelProperty(hidden = true)
     private int pageBegin;
-    
+
     @JsonIgnore
     @ApiModelProperty(hidden = true)
     private int pageEnd;

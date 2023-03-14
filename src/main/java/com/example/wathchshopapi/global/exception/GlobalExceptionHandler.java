@@ -2,13 +2,18 @@ package com.example.wathchshopapi.global.exception;
 
 import com.example.wathchshopapi.global.annotation.ResponseErrorCode;
 import com.example.wathchshopapi.global.dto.ErrorResponseData;
+import com.example.wathchshopapi.global.dto.FieldValidateError;
 import com.example.wathchshopapi.global.dto.ResponseStatus;
+import com.example.wathchshopapi.global.dto.ValidationErrorResponse;
 import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.springframework.core.annotation.AnnotationUtils;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+
+import java.util.ArrayList;
 
 @ControllerAdvice
 public class GlobalExceptionHandler {
@@ -43,5 +48,20 @@ public class GlobalExceptionHandler {
             }
         }
         return ResponseEntity.status(status).body(response);
+    }
+
+    @ExceptionHandler({MethodArgumentNotValidException.class})
+    public ResponseEntity<ValidationErrorResponse> handleValidationExceptions(MethodArgumentNotValidException ex) {
+        var response = new ValidationErrorResponse();
+        var fieldErrorArr = new ArrayList<FieldValidateError>();
+        ex.getBindingResult().getFieldErrors().forEach(fieldError -> {
+                    fieldErrorArr.add(new FieldValidateError(
+                            fieldError.getCode(),
+                            fieldError.getField(),
+                            fieldError.getDefaultMessage()));
+                }
+        );
+        response.setFieldErrors(fieldErrorArr);
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
     }
 }

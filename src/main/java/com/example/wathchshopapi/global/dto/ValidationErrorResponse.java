@@ -8,23 +8,23 @@ import java.util.Objects;
 
 @Getter
 public class ValidationErrorResponse extends ErrorResponseData {
-    List<ValidationFieldError> fieldErrors;
+    List<FieldValidateError> fieldErrors;
 
     public ValidationErrorResponse() {
         super("VALIDATION_FAILED", "tham số không chính xác");
         this.fieldErrors = new ArrayList<>();
     }
 
-    public ValidationErrorResponse(List<ValidationFieldError> fieldErrors) {
+    public ValidationErrorResponse(List<FieldValidateError> fieldErrors) {
         super("VALIDATION_FAILED", "tham số không chính xác");
         this.fieldErrors = fieldErrors;
     }
 
-    public void setFieldErrors(List<ValidationFieldError> fieldErrors) {
+    public void setFieldErrors(List<FieldValidateError> fieldErrors) {
         this.fieldErrors = fieldErrors;
     }
 
-    public void addFieldError(ValidationFieldError fieldError) {
+    public void addFieldError(FieldValidateError fieldError) {
         this.fieldErrors.add(fieldError);
     }
 

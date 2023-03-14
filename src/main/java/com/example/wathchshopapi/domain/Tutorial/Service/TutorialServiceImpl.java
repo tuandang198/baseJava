@@ -18,8 +18,8 @@ public class TutorialServiceImpl implements TutorialService {
 
     @Override
     public PageImpl<Tutorial> findAll(BaseSearchRequest request) {
-
         List<Tutorial> tutorials = new ArrayList<>(tutorialRepository.search(request));
-        return new PageImpl<>(tutorials, PageRequest.of(0, 10), tutorials.size());
+        return new PageImpl<>(tutorials,
+                PageRequest.of(request.getPage(), request.getSize()), tutorials.size());
     }
 }

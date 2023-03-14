@@ -6,8 +6,8 @@ import com.example.wathchshopapi.global.base.BaseSearchRequest;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -19,8 +19,8 @@ import javax.validation.Valid;
 public class TutorialController {
     private final TutorialService service;
 
-    @GetMapping("/tutorials")
-    public ResponseEntity<PageImpl<Tutorial>> getAllTutorials(@ModelAttribute @Valid BaseSearchRequest request) {
+    @PostMapping("/tutorials")
+    public ResponseEntity<PageImpl<Tutorial>> getAllTutorials(@RequestBody @Valid BaseSearchRequest request) {
         return ResponseEntity.ok(service.findAll(request));
     }
 }

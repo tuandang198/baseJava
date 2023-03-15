@@ -1,12 +1,12 @@
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    password: my-secret-pw
-    url: jdbc:mysql://localhost:3307
-    username: root
+    password: ${DATABASE_PASSWORD:my-secret-pw}
+    url: jdbc:mysql://${DATABASE_HOST:localhost}:${DATABASE_PORT:3307}
+    username: ${DATABASE_USERNAME:root}
   flyway:
     validate-on-migrate: true
     locations: classpath:db/migration
     baseline-on-migrate: true
-    schemas: db_test_v1
+    schemas: ${DATABASE_NAME:db_test}
 #    enabled: ${SPRING_FLYWAY_ENABLED:false}

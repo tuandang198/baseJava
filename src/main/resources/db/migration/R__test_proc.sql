@@ -1,0 +1,8 @@
+DROP PROCEDURE IF EXISTS sp_GetMovies;
+DELIMITER $$
+CREATE PROCEDURE sp_GetMovies()
+BEGIN
+    SELECT * FROM students;
+END$$
+
+DELIMITER ;

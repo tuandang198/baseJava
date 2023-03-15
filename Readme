@@ -1,0 +1,10 @@
+Flyway Mysql Procedure format
+
+DROP PROCEDURE IF EXISTS sp_GetMovies;
+DELIMITER $$
+CREATE PROCEDURE sp_GetMovies()
+BEGIN
+    SELECT * FROM movies;
+END$$
+
+DELIMITER ;

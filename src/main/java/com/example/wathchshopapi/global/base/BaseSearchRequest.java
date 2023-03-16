@@ -12,6 +12,7 @@ import javax.validation.constraints.NotNull;
 @Setter
 public class BaseSearchRequest {
     @NotNull
+//    @FieldValueMatch(fieldMatch = "TEST_CODE")
     private int page;
 
     @NotNull

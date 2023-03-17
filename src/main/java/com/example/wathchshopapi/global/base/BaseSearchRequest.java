@@ -1,5 +1,7 @@
 package com.example.wathchshopapi.global.base;
 
+import com.example.wathchshopapi.global.annotation.FieldValueMatch;
+import com.example.wathchshopapi.global.dto.ResponseStatus;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +14,10 @@ import javax.validation.constraints.NotNull;
 @Setter
 public class BaseSearchRequest {
     @NotNull
-//    @FieldValueMatch(fieldMatch = "TEST_CODE")
     private int page;
 
+    @FieldValueMatch(fieldMatch = ResponseStatus.class)
+    private String tesst;
     @NotNull
     @Min(value = 1)
     private int size;

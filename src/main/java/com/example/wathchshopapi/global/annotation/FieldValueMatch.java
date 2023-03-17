@@ -16,5 +16,5 @@ public @interface FieldValueMatch {
 
     Class<? extends Payload>[] payload() default {};
 
-    String fieldMatch();
+    Class<?> fieldMatch();
 }

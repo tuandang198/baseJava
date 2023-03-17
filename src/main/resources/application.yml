@@ -2,11 +2,12 @@ spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     password: ${DATABASE_PASSWORD:my-secret-pw}
-    url: jdbc:mysql://${DATABASE_HOST:localhost}:${DATABASE_PORT:3307}/${DATABASE_NAME:db_test}
+    url: jdbc:mysql://${DATABASE_HOST:localhost}:${DATABASE_PORT:3307}/${DATABASE_NAME:db_test123}?createDatabaseIfNotExist=${CREATE_DATABASE:true}
     username: ${DATABASE_USERNAME:root}
   flyway:
     validate-on-migrate: true
     locations: classpath:db/migration
     baseline-on-migrate: true
-    schemas: ${DATABASE_NAME:db_test}
-#    enabled: ${SPRING_FLYWAY_ENABLED:false}
+  #    createSchemas: false
+  #    schemas: ${DATABASE_NAME:db_test12}
+  #    enabled: ${SPRING_FLYWAY_ENABLED:false}

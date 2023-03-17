@@ -1,5 +1,5 @@
-Flyway Mysql Procedure format
-
+**Flyway Mysql Procedure format
+-- ${flyway:timestamp}
 DROP PROCEDURE IF EXISTS sp_GetMovies;
 DELIMITER $$
 CREATE PROCEDURE sp_GetMovies()

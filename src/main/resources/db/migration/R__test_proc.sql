@@ -1,6 +1,8 @@
-DROP PROCEDURE IF EXISTS db_test.sp_student;
+-- ${flyway:timestamp}
+DROP PROCEDURE IF EXISTS sp_student;
 
 DELIMITER $$
+
 CREATE PROCEDURE sp_student(
     IN P_PAGE_BEGIN INT
 , IN P_PAGE_END INT
@@ -9,8 +11,8 @@ BEGIN
 
     SELECT *
     FROM (SELECT ROW_NUMBER() OVER (ORDER BY ID) AS INTROW,
-                 ST.*
-          FROM ele_hrm_db.student ST) S
+                 ST.id
+          FROM students ST) S
     WHERE S.INTROW BETWEEN P_PAGE_BEGIN AND P_PAGE_END;
 END$$
 DELIMITER ;

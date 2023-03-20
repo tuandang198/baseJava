@@ -11,3 +11,7 @@ spring:
   #    createSchemas: false
   #    schemas: ${DATABASE_NAME:db_test12}
   #    enabled: ${SPRING_FLYWAY_ENABLED:false}
+  redis:
+    #    host: ${SPRING_REDIS_HOST:10.0.222.163}
+    host: ${SPRING_REDIS_HOST:localhost}
+    port: ${SPRING_REDIS_PORT:6379}
